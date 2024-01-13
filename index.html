@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    <title>Music Player</title>
+</head>
+<body>
+    <div id="player">
+        <div id="song-image">
+            <div id="song-image-inner">
+                <i class="fa-solid fa-play"></i>
+                <i class="fa-solid fa-music hidden"></i>
+            </div>
+        </div>
+        <div id="song-name">
+            <p id="song-title">Song title</p>
+            <p id="song-album"><span>Album</span></p>
+            <p id="song-artist">Song singer</p>
+        </div>
+        <div id="song-tracking">
+            <div id="tracking-inner">
+            </div>
+        </div>
+        <div id="player-buttons">
+            <div class="player-button side"><i class="fa-solid fa-repeat"></i></div>
+            <div class="player-button"><i class="fa-solid fa-backward"></i></div>
+            <div class="player-button">
+                <i class="fa-solid fa-play"></i>
+                <i class="fa-solid fa-pause hidden"></i>
+            </div>
+            <div class="player-button"><i class="fa-solid fa-forward"></i></div>
+            <div class="player-button side"><i class="fa-solid fa-shuffle"></i></div>
+        </div>
+        <div id="playlist"></div>
+    </div>
+    <script src="https://kit.fontawesome.com/b48893ea03.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
