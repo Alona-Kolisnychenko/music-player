@@ -4,10 +4,10 @@
   box-sizing: border-box;
 }
 :root {
-    --dark-color: #0d3e48;
+  --dark-color: #0d3e48;
   --main-color: #076376;
   --secondary-color: rgb(32, 158, 175);
-  --text-color: rgb(203, 243, 247);
+  --text-color: #cbf3f7;
 }
 body {
   width: 100%;
@@ -22,19 +22,37 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 100%;
 }
-#player {
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+#player, .play-list {
   width: 300px;
-  height: fit-content;
-  margin: 0 auto;
+  height: 510px;
   border-radius: 5px;
   box-shadow: 3px 5px 10px 5px rgba(98, 153, 199, 0.5);
-  padding: 20px 10px;
+  padding: 10px 10px 30px;
   background-color: var(--dark-color);
+}
+
+#player-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 5px 15px;
+}
+h1{
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+.button.side .fa-bars{
+  font-size: 1rem;
 }
 #song-image {
   width: 90%;
   height: 250px;
-  background: var(--secondary-color);
   background: linear-gradient(
     120deg,
     var(--secondary-color) 4%,
@@ -48,36 +66,20 @@ body {
   justify-content: center;
   align-items: center;
 }
-#song-image-inner {
-  width: 150px;
-  height: 150px;
-  background: var(--main-color);
-  background: var(--secondary-color);
-  background: linear-gradient(
-    320deg,
-    var(--secondary-color) 10%,
-    var(--main-color) 60%,
-    var(--dark-color) 96%
-  );
-  border-radius: 5px;
-  box-shadow: 2px 2px 8px 5px var(--dark-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#image{
+  display: block;
+  width: 170px;
+  height: 170px;
 }
-.fa-solid{
-    font-size: 40px;
-    color: var(--dark-color);
-}
-#song-name{
-    margin-bottom: 20px;
+#song-name {
+  margin-bottom: 20px;
 }
 
 #song-title {
   text-align: center;
   color: var(--text-color);
-  font-size: 1.5rem;
-  letter-spacing: 3px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
   font-weight: bold;
   margin-bottom: 15px;
 }
@@ -93,12 +95,13 @@ body {
   position: absolute;
   top: -8px;
   left: 50%;
-  font-size: 1rem;
   transform: translate(-50%);
   background-color: var(--dark-color);
+  font-size: 0.8rem;
   padding: 0 10px;
   color: var(--text-color);
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 #song-artist {
   font-size: 0.7rem;
@@ -106,53 +109,147 @@ body {
   text-align: center;
   letter-spacing: 1px;
 }
-#song-tracking{
-    width: 90%;
-    height: 8px;
-    border-radius: 5px;
-    background-color: var(--secondary-color);
-    margin: 0 auto 20px;
+#song-tracking {
+  width: 90%;
+  height: 20px;
+  border-radius: 5px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#tracking-inner{
-    height: 100%;
-    width: 50%;
-    background: var(--dark-color);
-    background: linear-gradient(90deg, var(--dark-color) 0%, var(--text-color) 100%);
-    border-radius: 0 5px 5px 0;
+.song-tracking-duration{
+  color: var(--text-color);
+  margin: 0 10px;
+  font-size: 0.7rem;
 }
-#player-buttons{
-    width: 90%;
-    height: 40px;
-    margin: 0 auto;
-    background: var(--secondary-color);
-    background: linear-gradient(
-      120deg,
-      var(--secondary-color) 4%,
-      var(--main-color) 30%,
-      var(--dark-color) 100%
-    );
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+input[type='range'] {
+  appearance: none;
+  background-color: var(--main-color);
+  border-radius: 10px;
 }
-.player-button{
-    width: 30px;
-    height: 30px;  
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+#duration{
+  width: 70%;
+  height: 10px;
 }
-.player-button:not(.side){
-    background-color: var(--dark-color);
+#volume-change{
+  width: 100%;
+  height: 7px;
+  transform: rotate(0deg);
+  background-color: var(--secondary-color);
 }
-.player-button i{
-    color: var(--text-color);
-    font-size: 12px;
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  cursor: grab;
+  background: var(--text-color);
+  border-radius: 50%;
+}
+input[type='range']:active::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: grabbing;
+}
+#duration::-webkit-slider-thumb{
+  width: 15px;
+  height: 15px;
+}
+#volume::-webkit-slider-thumb{
+  width: 10px;
+  height: 10px;
 }
 
-.hidden{
-    display: none;
+#player-buttons {
+  width: 90%;
+  height: 40px;
+  margin: 0 auto;
+  background: var(--secondary-color);
+  background: linear-gradient(
+    120deg,
+    var(--dark-color) 4%,
+    var(--main-color) 30%,
+    var(--secondary-color) 100%
+  );
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
 }
+#volume-area{
+  position: absolute;
+  bottom: 67px;
+  left: -25px;
+  width: 100px;
+  height: 20px;
+  padding: 5px;
+  background-color: var(--main-color);
+  border-radius: 5px;
+  transform: rotate(-90deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.button:hover{
+  box-shadow: 0 0 5px 2px var(--main-color);
+}
+.button:active{
+  transform: scale(0.9);
+}
+
+.button:not(.side) {
+  background-color: var(--dark-color);
+}
+.button i {
+  color: var(--text-color);
+  font-size: 0.8rem;
+}
+
+.button.hide, #volume-area.hide, .fa-solid.hide{
+  display: none;
+}
+
+
+.play-list{
+  padding: 0;
+  width: 0;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.open-list{
+  width: 300px;
+}
+
+#play-list-header{
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(
+    120deg,
+    var(--dark-color) 2%,
+    var(--main-color) 40%,
+    var(--secondary-color) 100%
+  );
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.button.side .fa-xmark{
+  font-size: 1rem;
+}
+
+
