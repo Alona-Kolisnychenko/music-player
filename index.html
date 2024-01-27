@@ -20,6 +20,7 @@
             <div id="song-image">
                 <div id="song-image-inner">
                     <img src="#" alt="cover" id="image">
+                    <i class="fa-solid fa-music hide"></i>
                 </div>
             </div>
             <div id="song-name">
@@ -65,15 +66,12 @@
                     <i class="fa-solid fa-xmark"></i>
                 </div>
             </div>
-            <ul id="list">
-                <li class="song">
-                    <div class="name">
-                        <p class="name-title">Title</p>
-                        <p class="name-author">Author</p>
-                    </div>
-                    <p class="duration">Duration</p>
-                </li>
-            </ul>
+            <ol id="list"></ol>
+            <div class="playlist-buttons">
+                <input type="file" id="fileInput" class="hidden" accept="audio/*"/>
+                <label for="fileInput" class="custom-file-upload">Choose your track</label>
+                <button type="button" id="reset-btn">Reset Playlist</button>
+            </div>
         </div>
     </div>
     
