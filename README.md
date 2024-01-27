@@ -10,4 +10,4 @@ Functionality:
 -remove song from playlist
 -reset playlist
 
-Steak: HTML, CSS, Java Script
+Stack: HTML, CSS, Java Script
