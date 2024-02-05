@@ -184,16 +184,21 @@ forwardBtn.onclick = () => {
   playBtn.click();
 };
 
-// Ручна прокрутка треку
+
+// Атвоматичне перемикання треків
 setInterval(() => {
   audioDuration.value = audio.currentTime;
   document.querySelector('.start').innerText = songDuration(audio.currentTime);
   if (audioDuration.max == audio.currentTime) forwardBtn.click();
 }, 1000);
 
-// Атвоматичне перемикання треків
+// Ручна прокрутка треку
 audioDuration.addEventListener('input', () => {
+  audio.pause()
   audio.currentTime = audioDuration.value;
+});
+audioDuration.addEventListener('change', () => {
+  audio.play()
 });
 
 // Відкривання списку треків
